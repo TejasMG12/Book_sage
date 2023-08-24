@@ -23,14 +23,7 @@ import {
 
 // initialising and importing all the firebase dependencies
 const firebaseConfig = {
-    apiKey: "AIzaSyAm2b4KCZv4Xd6b7YYGiXutP8to7UknoGA",
-    authDomain: "new-project-d8011.firebaseapp.com",
-    databaseURL: "https://new-project-d8011-default-rtdb.firebaseio.com",
-    projectId: "new-project-d8011",
-    storageBucket: "new-project-d8011.appspot.com",
-    messagingSenderId: "529199335501",
-    appId: "1:529199335501:web:d26cf76f6c3fae25297404",
-    measurementId: "G-MB9ZTFE63Y"
+    //    Enter your own api keys
 };
 
 // initialising the "app" object to firebase
@@ -124,7 +117,7 @@ sign_in.addEventListener("click", () => {
                 sign_in.innerHTML = 'Resend email';
             })
             .catch(function (error) {
-                
+
                 accounttext1.style.display = "block";
                 notify('error', 'Unable to send !', ' An account with this email does not exist!');
             });
@@ -329,7 +322,7 @@ function notify(type, title, message) {
 
 
     //VARIABLES 
-    var toast_container = (openpage == 1||openpage==3 ? container_div1 : openpage == 2 ? container_div2 : null),
+    var toast_container = (openpage == 1 || openpage == 3 ? container_div1 : openpage == 2 ? container_div2 : null),
         toast_type = type,
         toast_icon = null,
         toast_title = title,
@@ -376,14 +369,14 @@ document.getElementById("togglePassword").addEventListener('click', function (e)
     sign_in_psw.setAttribute('type', type);
     // toggle the eye slash icon
     this.classList.toggle('fa-eye-slash');
-  });
-  document.getElementById("togglePassword2").addEventListener('click', function (e) {
+});
+document.getElementById("togglePassword2").addEventListener('click', function (e) {
     // toggle the type attribute
     const type = sign_up_psw.getAttribute('type') === 'password' ? 'text' : 'password';
     sign_up_psw.setAttribute('type', type);
     // toggle the eye slash icon
     this.classList.toggle('fa-eye-slash');
-  });
+});
 
 
 
@@ -393,7 +386,7 @@ const forgot_page = document.getElementById("forgot-page");
 const password_box = document.getElementById("password-box");
 forgot_page.addEventListener("click", function () {
     if (openpage == 1) {
-        
+
         sign_in.innerHTML = 'Send Email';
         password_box.style.display = 'none';
         document.getElementById("sign-in-title").innerText = 'Reset Password';

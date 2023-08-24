@@ -6,7 +6,7 @@ window.onload = function () {
   searchBooks();
 };
 function searchBooks() {
-  const apiKey = 'AIzaSyBswSfiX9MTv3sstnP0qlEgpZPX5JqwbCc'; 
+  const apiKey = 'Enter your own api key'; 
   const searchQuery = document.getElementById('search-input').value.trim();
 
   if (searchQuery === '') {
