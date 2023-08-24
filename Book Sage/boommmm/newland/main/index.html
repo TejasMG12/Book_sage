@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+    integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <style>
+    body {
+      background: #161616;
+    }
+    
+    h1 {
+      color: #fcfcfc;
+      padding: 10px 0;
+    }
+    
+    .search{
+      background-color: black;
+      color: white;
+      border-color: black;
+    }
+    
+    .search:hover {
+      background-color: #333;
+      border-color: #333;
+    }
+    
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: box-shadow 0.3s;
+      border: none;
+      border-radius: 4px;
+      background-color: #000;
+      margin-bottom: 20px;
+      overflow: hidden;
+      position: relative;
+      width: 210px;
+      height: 320px;
+      margin :30px;
+    }
+    
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+    
+    .card:hover .play-button {
+      display: block;
+    }
+    .heart-icon {
+      position: absolute;
+      bottom: 285px;
+      left: 20px;
+      color: gray; 
+      font-size: 20px;
+      margin-left: 160px;
+      z-index: 10;
+      
+    }
+    
+    .card a {
+      color: #fff;
+    }
+    .red-heart{
+      color: red;
+    }
+    .card a:hover {
+      text-decoration: none;
+    }
+    
+    .card-img-top {
+      width: 100%;
+      object-fit: cover;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+    
+    .card-body {
+      position: absolute;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+      padding: 15px;
+      width: 100%;
+    }
+    
+    .card-title {
+      font-size: 16px;
+      margin-bottom: 0px;
+      color: rgb(255, 255, 255);
+    }
+    
+    .card-text {
+      display: none; 
+    }
+    
+    #book-info-container{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: start;
+      
+    }
+    .modal-content {
+      border: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      background-color: rgb(20, 20, 20);
+      color: #c0b4b4;
+    }
+    .modal-header {
+      border-bottom: none;
+    }
+    .modal-title {
+      font-size: 24px;
+      color: #c0b4b4;
+    }
+    .close {
+      font-size: 20px;
+      color: #c0b4b4;
+    }
+    .modal-body {
+      font-size: 14px;
+      height: 400px;
+      width: 400px;
+      overflow-y: scroll;
+      margin-left:30px;
+    }
+    
+    .hero {
+      background-color: #f5f7fd;
+      overflow: hidden;
+    
+      z-index: -1;
+    }
+    .cube {
+      position: absolute;
+      top: 80vh;
+      left: 45vw;
+      width: 10px;
+      height: 10px;
+      border: solid 1px #fc7223;
+      transform-origin: top left;
+      transform: scale(0) rotate(0deg) translate(-50%, -50%);
+      -webkit-animation: cube 12s ease-in forwards infinite;
+              animation: cube 12s ease-in forwards infinite;
+      z-index: -1;
+    }
+    .cube:nth-child(2n) {
+      border-color: #ffa640;
+    }
+    .cube:nth-child(2) {
+      -webkit-animation-delay: 2s;
+              animation-delay: 2s;
+      left: 25vw;
+      top: 40vh;
+    }
+    .cube:nth-child(3) {
+      -webkit-animation-delay: 4s;
+              animation-delay: 4s;
+      left: 75vw;
+      top: 50vh;
+    }
+    .cube:nth-child(4) {
+      -webkit-animation-delay: 6s;
+              animation-delay: 6s;
+      left: 90vw;
+      top: 10vh;
+    }
+    .cube:nth-child(5) {
+      -webkit-animation-delay: 8s;
+              animation-delay: 8s;
+      left: 10vw;
+      top: 85vh;
+    }
+    .cube:nth-child(6) {
+      -webkit-animation-delay: 10s;
+              animation-delay: 10s;
+      left: 50vw;
+      top: 10vh;
+    }
+    .pagination{
+      margin: 30px;
+    
+    }
+    .next_but{
+      margin-left: 920px;
+    }
+    
+    @-webkit-keyframes cube {
+      from {
+        transform: scale(0) rotate(0deg) translate(-50%, -50%);
+        opacity: 1;
+      }
+      to {
+        transform: scale(20) rotate(960deg) translate(-50%, -50%);
+        opacity: 0;
+      }
+    }
+    
+    @keyframes cube {
+      from {
+        transform: scale(0) rotate(0deg) translate(-50%, -50%);
+        opacity: 1;
+      }
+      to {
+        transform: scale(20) rotate(960deg) translate(-50%, -50%);
+        opacity: 0;
+      }
+    }
+    @media (max-width: 576px) {
+      .card-columns {
+        column-count: 1;
+      }
+    }
+    @media (min-width: 576px) {
+      .card-columns {
+        column-count: 2;
+      }
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="hero">
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+  </div>
+  <div class="container">
+    <div class="text-center">
+      <h1>Books</h1>
+    </div>
+    <div class="input-group my-3">
+      <input type="text" class="form-control" id="search-input" placeholder="Search for books..."
+        aria-label="Search for books" aria-describedby="search-button" />
+      <div class="input-group-append">
+        <button class="btn btn-primary search" type="button" onclick="searchBooks()">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    </div>
+    <div id="book-info-container" class="container"></div>
+    <div class="pagination">
+      <button onclick="previousPage()">Previous</button>
+      <button class="next_but" onclick="nextPage()">Next</button>
+    </div>
+  </div>
+  <div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="bookModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bookModalLabel">Book Description</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="bookModalBody">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    let currentPage = 1;
+    const resultsPerPage = 16;
+    const container = document.getElementById('book-info-container');
+    window.onload = function () {
+      document.getElementById('search-input').value = 'javascript';
+      searchBooks();
+    };
+    function searchBooks() {
+      const apiKey = 'AIzaSyBswSfiX9MTv3sstnP0qlEgpZPX5JqwbCc';
+      const searchQuery = document.getElementById('search-input').value.trim();
+
+      if (searchQuery === '') {
+        alert('Please enter a book name.');
+        return;
+      }
+
+      const startIndex = (currentPage - 1) * resultsPerPage;
+      const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
+        searchQuery
+      )}&key=${apiKey}&startIndex=${startIndex}&maxResults=${resultsPerPage}`;
+
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          const container = document.getElementById('book-info-container');
+          container.innerHTML = '';
+
+          if (data.items && data.items.length > 0) {
+            data.items.forEach((item) => {
+              const book = item.volumeInfo;
+              createBookCard(book);
+            });
+          } else {
+            container.innerHTML = '<p>No books found.</p>';
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+
+    function showBookDescription(book) {
+      const modalTitle = document.getElementById('bookModalLabel');
+      const modalBody = document.getElementById('bookModalBody');
+
+      modalTitle.innerText = book.title || 'Book Description';
+      modalBody.innerHTML = `
+    <p><strong>Authors:</strong> ${book.authors?.join(', ') || 'Unknown'}</p>
+    <p><strong>Publisher:</strong> ${book.publisher || 'Unknown'}</p>
+    <p><strong>Published Date:</strong> ${book.publishedDate || 'Unknown'}</p>
+    <p><strong>Description:</strong> ${book.description || 'No description available.'}</p>
+  `;
+
+      $('#bookModal').modal('show');
+    }
+
+    function createBookCard(book) {
+      const bookInfo = document.createElement('div');
+      bookInfo.className = 'card';
+
+      const heartIcon = document.createElement('i');
+      heartIcon.className = 'fas fa-heart heart-icon';
+      bookInfo.appendChild(heartIcon);
+      heartIcon.addEventListener('click', function (e) {
+        e.stopPropagation();
+        heartIcon.classList.toggle('red-heart');
+
+      });
+
+      bookInfo.addEventListener('click', function () {
+        showBookDescription(book);
+      });
+      const bookImage = document.createElement('img');
+      bookImage.src = book.imageLinks?.thumbnail || 'no-image.png';
+      bookImage.className = 'card-img-top';
+      bookInfo.appendChild(bookImage);
+
+      const bookDetails = document.createElement('div');
+      bookDetails.className = 'card-body';
+      bookDetails.innerHTML = `
+    <h5 class="card-title">${book.title || 'Unknown'}</h5>
+    <p class="card-text"><strong>Authors:</strong> ${book.authors?.join(', ') || 'Unknown'}</p>
+    <p class="card-text"><strong>Publisher:</strong> ${book.publisher || 'Unknown'}</p>
+    <p class="card-text"><strong>Published Date:</strong> ${book.publishedDate || 'Unknown'}</p>
+  `;
+      bookInfo.appendChild(bookDetails);
+
+      container.appendChild(bookInfo);
+      bookInfo.addEventListener('click', function () {
+        showBookDescription(book);
+      });
+    }
+
+    function nextPage() {
+      currentPage++;
+      searchBooks();
+    }
+
+    function previousPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        searchBooks();
+      }
+    }
+
+    document.addEventListener("keypress", function (event) {
+      if (event.keyCode === 13) {
+        document.querySelector(".search").click();
+      }
+
+    });
+
+  </script>
+  <script type="text/javascript" src="https://cookieconsent.popupsmart.com/src/js/popper.js"></script>
+  <script> window.start.init({ Palette: "palette4", Theme: "block", Mode: "banner bottom", Message: "This website uses cookies to ensure you get the best experience ", ButtonText: "LETS GO!", LinkText: "If you are a nerd, click here to read more", Location: "cookie policy for nerds", Time: "1", })</script>
+</body>
+
+</html>

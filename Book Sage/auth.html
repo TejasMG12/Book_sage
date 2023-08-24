@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <title>signin-signup</title>
+    <script>
+        function clickfn(Btn) {
+            document.getElementById(Btn).click();
+        }
+        function show(ele){
+            document.getElementById(ele);
+            
+        }
+    </script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="signin-signup">
+            <form action="" class="sign-in-form">
+                <h2 class="title" id="sign-in-title">Sign in</h2>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="sign-in-email" placeholder=" Email">
+                </div>
+                <div class="input-field" id="password-box">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="sign-in-password" placeholder="Password">
+                    <i class="far fa-eye" id="togglePassword"></i> 
+                </div>
+                
+                <button type="button" id="sign-in" value="Login" class="btn">sign-in</button><br>
+                <button type="button"  id="forgot-page" >Forgot password?</button>
+
+                <p class="social-text">Or Sign in with social platform</p>
+                <div class="social-media">
+                    <button type="button" id="fb1" class="social-icon">
+                        <i class="fab fa-facebook"></i>
+                    </button>
+                    <button type="button" id="twt1" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                    <button type="button" id="google1" class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button type="button" id="linkedin1" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </button>
+
+
+                </div>
+                <p class="account-text" id="text1">Don't have an account?<a id="sign-up-btn2"
+                        href="javascript:clickfn('sign-up-btn')">Sign up</a></p>
+                <div class="social-media" id="pop-up-div1"></div>
+            </form>
+            <form action="" class="sign-up-form">
+                <h2 class="title">Sign up</h2>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="sign-up-username" placeholder="Username">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" id="sign-up-email" placeholder="Email">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="sign-up-pass" placeholder="Password">
+                    <i class="far fa-eye" id="togglePassword2"></i>              
+                </div>
+                <button type="button" id="sign-up" value="" class="btn">Sign up</button>
+                <p class="social-text">Or Sign up with social platform</p>
+                <div class="social-media">
+                    <button type="button" id="fb2" class="social-icon">
+                        <i class="fab fa-facebook"></i>
+                    </button>
+                    <button type="button" id="twt2" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                    <button type="button" id="google2" class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button type="button" id="linkedin2" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </button>
+                </div>
+                <p class="account-text" id="text2">Already have an account? <a id="sign-in-btn2"
+                        href="javascript:clickfn('sign-in-btn')">Sign in</a></p>
+                <div class="social-media" id="pop-up-div2"></div>
+            </form>
+        </div>
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <button class="btn" id="sign-in-btn">Sign in</button>
+                </div>
+                <!-- <img src="signin.svg" alt="" class="image"> -->
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <button class="btn" id="sign-up-btn">Sign up</button>
+                </div>
+                <!-- <img src="signup.svg" alt="" class="image"> -->
+            </div>
+        </div>
+    </div>
+    <script type="module" src="auth.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>

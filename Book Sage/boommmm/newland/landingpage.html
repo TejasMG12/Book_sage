@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <style>
+        @font-face {
+            font-family: lobster;
+            src: url(stuff/lobsterfont/Lobster-Regular.ttf);
+        }
+
+        @font-face {
+            font-family: montserrat;
+            src: url(stuff/Montserratfont/Montserrat-VariableFont_wght.ttf);
+        }
+
+        .lobster {
+            font-family: lobster;
+        }
+
+        body {
+            background: #E8E8E8;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .Logobar {
+            background: rgba(255, 255, 255, 0.60);
+            width: 100%;
+            height: 103px;
+            flex-shrink: 0;
+        }
+
+        #logo1 {
+            padding-top: 18px;
+            padding-left: 15px;
+        }
+
+        #home {
+            height: 955px;
+            border: 0;
+            margin: 0;
+        }
+
+        .intro {
+            width: 700px;
+            height: 600px;
+            flex-shrink: 0;
+            margin-left: 290px;
+            margin-top: 150px;
+        }
+
+        .iline1 {
+            width: 100%;
+            height: 40px;
+            flex-shrink: 0;
+            color: #4B4B4B;
+            text-align: center;
+            font-family: montserrat;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .redlite {
+            opacity: 0.6000000238418579;
+            color: #FF0031;
+            font-family: montserrat;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .iline2 {
+            color: #000;
+            text-align: center;
+            font-family: montserrat;
+            font-size: 60px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin: 0;
+        }
+
+        .red1 {
+            color: #FF0031;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .button {
+            padding-left: 35%;
+            padding-top: 30px;
+        }
+
+        #button1 {
+            font-family: montserrat;
+            width: 200px;
+            height: 50px;
+            flex-shrink: 0;
+            color: #FFF;
+            text-align: center;
+            font-family: montserrat;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            background: #F00;
+            border-radius: 45px;
+            cursor: pointer;
+            border: 0;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.60);
+            transition: all 0.3s ease 0s;
+        }
+
+        .iline3 {
+            width: 80%;
+            height: 68px;
+            flex-shrink: 0;
+            color: #000;
+            text-align: center;
+            font-family: montserrat;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            margin-left: 65px;
+            margin-top: 50px;
+        }
+
+        #books_design {
+            float: right;
+            height: 100vh;
+        }
+
+        #button1:hover {
+            background-color: #ffffff;
+            box-shadow: 0px 15px 20px rgba(195, 10, 10, 0.792);
+            color: #ff0000;
+            transform: translateY(-7px);
+        }
+
+        #button1:active {
+            transform: translateY(5px);
+        }
+
+        #about {
+            font-family: montserrat;
+            border: 0;
+            margin: 0;
+            position: relative;
+            padding: 100px;
+            padding-top: 10px;
+            padding-bottom: 0;
+            color: white;
+            background-color: #4d4855;
+            background-image: linear-gradient(147deg, #4d4855 0%, #000000 74%);
+
+
+        }
+
+        #about h1 {
+            font-size: 80px;
+        }
+
+        #about h2 {
+            font-size: 50px;
+        }
+
+        #about p {
+            font-size: 35px;
+        }
+
+        .welcome {
+            padding: 300px;
+            padding-top: 40px;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .vision {
+            padding: 300px;
+            padding-top: 40px;
+            padding-bottom: 10px;
+        }
+
+        .offer,
+        .contact {
+            padding: 300px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .offer h2,
+        .offer ol {
+            margin: 0;
+        }
+
+        #about .contact p,
+        .offer ol {
+            font-size: 20px;
+        }
+
+        .contact .wrapper {
+            padding: 5px;
+            margin-left: 375px;
+            transform: translate(-50%, -50%);
+        }
+
+        .contact a {
+            display: block;
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+            font-family: sans-serif;
+            text-decoration: none;
+            color: #e4dfdf;
+            border: 2px solid #333;
+            letter-spacing: 2px;
+            text-align: center;
+            position: relative;
+            transition: all .35s;
+        }
+
+        .contact a span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact a:after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: #ff003b;
+            transition: all .35s;
+        }
+
+        .contact a:hover {
+            color: #fff;
+        }
+
+        .contact a:hover:after {
+            width: 100%;
+        }
+
+        #blah {
+            margin-top: 0;
+        }
+
+        /* //responsiveness */
+        @media (max-width:1750px) {
+
+
+            .books_design_div {
+                display: none;
+            }
+
+            .intro {
+                text-align: centre;
+                width: 100%;
+                height: 70%;
+                margin-left: 100px;
+                margin-right: 100px;
+
+            }
+
+            .welcome {
+                padding: 100px;
+                padding-top: 40px;
+                padding-bottom: 10px;
+                text-align: center;
+            }
+
+            .vision {
+                padding: 100px;
+                padding-top: 40px;
+                padding-bottom: 10px;
+            }
+
+            .offer,
+            .contact {
+                padding: 100px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            #about {
+
+                padding: 100px;
+                padding-top: 10px;
+
+
+            }
+        }
+
+
+        @media (max-width:1020px) {
+            #home {
+                width: 100%;
+                height: 70%;
+            }
+
+
+            #about {
+                display: none;
+            }
+
+            .intro {
+                text-align: centre;
+                /* width: 100%;
+            height: 100%; */
+                margin-left: 30px;
+                margin-right: 10px;
+
+            }
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="landingpage.css"> -->
+    <title>Welcome to BookSage</title>
+</head>
+
+<body>
+    <div id="home">
+        <div class="books_design_div">
+            <img id="books_design" src="stuff/books/Group 2.png" alt="Design">
+        </div>
+        <div class="Logobar">
+            <img id="logo1" src="stuff/logos/Frame1.png" title="BookSage"></img>
+        </div>
+        <div class="intro">
+            <p class="iline1 introcontent">Intoducing <span class="redlite"> Book<span
+                        class="lobster">S</span>age</span></p>
+            <p class="iline2 introcontent">Navigate the Vast Literary <br> Landscape with <span class="red1">Book<span
+                        class="lobster">S</span>age</span>.</p>
+            <div class="button">
+                <button id="button1">Explore</button>
+            </div>
+            <p class="iline3 intocontent">Explore the vast world of books, gain insights from fellow readers, and embark
+                on a reading journey like no other with <span class="red1">Book<span class="lobster">S</span>age</span>.
+            </p>
+        </div>
+    </div>
+
+    <div id="about">
+        <marquee scrollamount="20">
+            <h1>About <span class="red1">Book<span class="lobster">S</span>age:</span> Discover, Explore, and Embrace
+                the World of Books</h1>
+        </marquee>
+        <div class="welcome">
+            <p>Welcome to Book<span class="lobster">S</span>age, your ultimate destination for all things books! Our
+                platform is designed to provide book lovers, avid readers, and curious minds with an enriching
+                experience of literary exploration. Whether you're a seasoned bibliophile or just starting your reading
+                journey, Book<span class="lobster">S</span>age is here to accompany you every step of the way.</p>
+        </div>
+        <div class="vision">
+            <h2>Our vision</h2>
+            <p>We envision a world where books transcend boundaries, fostering empathy, understanding, and a deep
+                connection between individuals. Booksage seeks to promote diverse voices and perspectives, encouraging
+                readers to explore different genres and cultures, broadening their worldview.
+            </p>
+        </div>
+        <div class="offer">
+            <h2>What we offer</h2>
+            <p>
+            <ol>
+                <li><strong>Book Summaries:</strong> Finding the perfect book can be overwhelming with the vast array of
+                    titles available. Our carefully curated book summaries give you a glimpse into each book's essence,
+                    enabling you to make informed decisions about your reading choices.</li><br>
+                <li><strong>Book Ratings and Reviews:</strong> Our community-driven platform allows readers to share
+                    their thoughts, opinions, and insights through genuine book reviews. Discover what others loved
+                    about a particular book and get inspired by their passion for literature.</li><br>
+                <li><strong>Seasonal Reads:</strong> Embrace the spirit of each season with our curated lists of
+                    seasonal reads. Whether it's cozying up with heartwarming stories in winter or embarking on
+                    thrilling adventures during summer, our seasonal recommendations will match the mood of the moment.
+                </li><br>
+                <li><strong>Author Spotlights:</strong> Book<span class="lobster">S</span>age celebrates the talented
+                    minds behind the words. Learn more about your favorite authors, explore their literary journeys, and
+                    gain insight into the inspiration behind their works.</li>
+            </ol>
+            </p>
+        </div>
+        <div class="contact">
+            <h2 id="blah">Join the Book<span class="lobster">S</span>age Community</h2>
+            <p>At Book<span class="lobster">S</span>age, we believe in the power of community. Join us in celebrating
+                the magic of literature, where every page opens a new realm of imagination. Together, let's embark on a
+                journey of knowledge, creativity, and empathy through the written word.
+            </p>
+            <h2>Contact Us</h2>
+            <div class="wrapper">
+                <a href="mailto:tejasgampawar12@gmail.com"><span>Email us!</span></a>
+            </div>
+            <div class="wrapper">
+                <a href="#"><span>+93 123456789</span></a>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById("button1").addEventListener("click", function () {
+        window.location.href = "auth.html";
+    }); 
+</script>
+
+</html>
