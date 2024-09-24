@@ -1,13 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
 
 import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
   TwitterAuthProvider,
-  getRedirectResult,
-  signOut,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
   createUserWithEmailAndPassword,
@@ -64,15 +61,11 @@ Toastify({
 
 var email,
   password,
-  signupEmail,
   provider,
   usernm,
   token,
   credential,
-  user,
-  password,
-  confirmSignupEmail,
-  confirmpassword;
+  password;
 
 var openpage = 1;
 let email_pattern = /^[a-z0-9A-Z]+@(gmail|outlook|rediffmail|yahoo)+\.com$/i;
