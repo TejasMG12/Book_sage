@@ -1,5 +1,5 @@
 # Book Sage
- Live Demo: [BookSage](https://tejasmg12.github.io/Book_sage/).
+ Live Demo: [BookSage](https://tejasmg12.github.io/Book_sage/). <br>
 Welcome to **Book Sage**, a web application that allows users to search for books and get detailed information using the Google Books API. The app also features user authentication through Firebase, allowing users to securely log in and personalize their experience.
 
 ## Features
