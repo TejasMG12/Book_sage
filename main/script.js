@@ -1,3 +1,4 @@
+import { decryptMessage, encryptMessage } from "../utility.js";
 let currentPage = 1;
 const resultsPerPage = 16;
 const container = document.getElementById('book-info-container');
@@ -5,10 +6,10 @@ window.onload = function () {
   document.getElementById('search-input').value = 'Comics';
   searchBooks();
 };
-function searchBooks() {
-  const apiKey = 'AIzaSyDwzyJHVMX_YXJW3pGsXsucI8KcuCFEIVA'; 
+async function searchBooks() {
+  
+  const apiKey = await decryptMessage("1dbceddf94ea6831eec571ae:07e3fd239fb4dfd7358a580228d9144333e1ba49702cc1c0ebc5ced22e9bb809545a48c7029c4bf20a2232265575b5cd1158ad9863c015")
   const searchQuery = document.getElementById('search-input').value.trim();
-
   if (searchQuery === '') {
     alert('Please enter a book name.');
     return;
@@ -102,10 +103,14 @@ function previousPage() {
     searchBooks();
   }
 }
-
+window.searchBooks = searchBooks;
+window.nextPage = nextPage;
+window.previousPage = previousPage;
 document.addEventListener("keypress", function (event) {
   if (event.keyCode === 13) { 
     document.querySelector(".search").click();
   }
  
 });
+
+

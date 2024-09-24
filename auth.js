@@ -10,17 +10,18 @@ import {
   createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAm2b4KCZv4Xd6b7YYGiXutP8to7UknoGA",
-  authDomain: "new-project-d8011.firebaseapp.com",
-  databaseURL: "https://new-project-d8011-default-rtdb.firebaseio.com",
-  projectId: "new-project-d8011",
-  storageBucket: "new-project-d8011.appspot.com",
-  messagingSenderId: "529199335501",
-  appId: "1:529199335501:web:d26cf76f6c3fae25297404",
-  measurementId: "G-MB9ZTFE63Y",
-};
+import { decryptMessage } from "./utility.js";
 
+const firebaseConfig = {
+  apiKey: await decryptMessage("e46afabc941ad88388f43490:f29ef67a00cb41687f09d52184c0260aeeab0f0fd6a6463a216a3b3c7f70d38eb27929c966b1266e6b6d6c682a442f994b56f78ad598f4"),
+  authDomain: await decryptMessage("6b4451581af41adfcdda1074:de4242a39736369ae89e68f4bf8f21ab22838587e43320e83887972b5512959194f9f8c62fca148ad1639c4e006f605510"),
+  databaseURL: await decryptMessage("efe775615f6c151ce25cbb86:3c5a73d2f4a3f629c66343b7cbecbfbe3e1dec242bf02cca56296a6f7a189c2f95b5fa029b4779f174496ad191adf055f2e03d952cab6c8af6d3847082c06f49bebb01d9af"),
+  projectId: await decryptMessage("472c4d4de1b5ba8804fc6482:3bf2ccfaccdc17e8ac685bb5275ccdaf740a5ca40b082f7e6fcd4c2d7ce7c4b968"),
+  storageBucket: await decryptMessage("7c7169252e2b1d33d5093639:775f0127a717858b14a5d0d5ed84422a2e41beeffbc9235814e958b8d83f1a72d2392d52c5864af7f5f12f42b9"),
+  messagingSenderId: await decryptMessage("e5d60ee5870a9a15fd49461d:b9ee712b841cf0861eb5a5d806060cf517f782e5b5417032238812e3"),
+  appId: await decryptMessage("c9ede1bf979c5b4f6247dde5:cd7300657f342acc1921d0b0413a7b4b286fa1d4be06ab64149967af45b50ab89ae4371f7f90d057a1a672c12a51780b92826b2961d3f07a48"),
+  measurementId: await decryptMessage("cea1d4829edc5bef39b94e82:505afe0b051c371270c4c353a6a77a789358d48088d27d1b5b22dc42"),
+};
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
@@ -59,13 +60,7 @@ Toastify({
   stopOnFocus: true, // Stops auto close on focus
 });
 
-var email,
-  password,
-  provider,
-  usernm,
-  token,
-  credential,
-  password;
+var email, password, provider, usernm, token, credential, password;
 
 var openpage = 1;
 let email_pattern = /^[a-z0-9A-Z]+@(gmail|outlook|rediffmail|yahoo)+\.com$/i;
@@ -122,11 +117,8 @@ sign_in.addEventListener("click", () => {
     return;
   }
 
-  console.log("HEre");
   password = sign_in_psw.value;
-  console.log(password);
-  console.log(email);
-
+  
   // Pop up if email is not of right format =>
 
   signInWithEmailAndPassword(auth, email, password)
@@ -137,7 +129,7 @@ sign_in.addEventListener("click", () => {
       console.log("Success! Welcome back!");
       accounttext1.style.display = "none";
       notify("success", "Success!", "Welcome Back!!");
-      delay(3000).then(() => {
+      delay(1000).then(() => {
         window.open("main/main.html", "_self");
       });
     })
@@ -222,7 +214,6 @@ function signinfromGoogle() {
       // credential gives you the credential object from the googleauthprovider class
       credential = GoogleAuthProvider.credentialFromResult(result);
       token = credential.accessToken;
-      // console.log(credential);
       user = result.user;
       delay(1000).then(() => {
         window.open("main/main.html", "_self");
@@ -238,7 +229,6 @@ function signinfromTwitter() {
     .then((result) => {
       credential = TwitterAuthProvider.credentialFromResult(result);
       token = credential.accessToken;
-      // console.log(credential);
       user = result.user;
     })
     .catch((error) => {
@@ -280,16 +270,26 @@ document.getElementById("fb1").addEventListener("click", function () {
   });
 });
 
-document.addEventListener("keypress", function (event) {
-  if (event.keyCode === 13 && openpage === 1) {
-    // openpage = 1 when you're on the login page
-    sign_in.click();
+function debounce(func, delay) {
+  let timeout;
+  return function(...args) {
+      const context = this;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(context, args), delay);
+  };
+}
+document.addEventListener("keypress", debounce(function (event) {
+  if (event.keyCode === 13) {
+      if (openpage === 1) {
+          // openpage = 1 when you're on the login page
+          sign_in.click();
+      }
+      if (openpage === 2) {
+          // openpage = 2 when you're on the signup page
+          sign_up.click();
+      }
   }
-  if (event.keyCode === 13 && openpage === 2) {
-    // openpage = 2 when you're on the signup page
-    sign_up.click();
-  }
-});
+}, 1000));
 
 //Notify and pop ups for errors
 
