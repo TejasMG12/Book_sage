@@ -2,11 +2,11 @@ let currentPage = 1;
 const resultsPerPage = 16;
 const container = document.getElementById('book-info-container');
 window.onload = function () {
-  document.getElementById('search-input').value = 'javascript';
+  document.getElementById('search-input').value = 'Comics';
   searchBooks();
 };
 function searchBooks() {
-  const apiKey = 'Enter your own api key'; 
+  const apiKey = 'AIzaSyDwzyJHVMX_YXJW3pGsXsucI8KcuCFEIVA'; 
   const searchQuery = document.getElementById('search-input').value.trim();
 
   if (searchQuery === '') {
